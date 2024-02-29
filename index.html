@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone Giveaway Countdown</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #3498db;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    p {
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    #timer {
+        font-size: 23px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #endDate {
+        font-weight: bold;
+    }
+
+    #iphone-image {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 600px) {
+        .container {
+            padding: 10px;
+            border-radius: 0;
+        }
+
+        #timer {
+            font-size: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>iPhone Giveaway Countdown</h1>
+<p>This countdown timer is for a giveaway of a new iPhone.</p>
+
+<img id="iphone-image" src="C:\Users\User\Pictures\Screenshots\Screenshot 2024-02-29 104029.png" alt="iPhone 15">
+
+<div id="timer"></div>
+
+<p>The giveaway ends on: <span id="endDate"></span></p>
+
+</div>
+
+<script>
+    // TO MAKE THE FINISHING DATE IN 10 DAYS/SET THE TIMER
+    var now = new Date();
+    var countDownDate = new Date(now.getTime() + (10 * 24 * 60 * 60 * 1000));
+
+    // CALCULATE THE ENDING DATE
+    var endDate = new Date(countDownDate);
+    document.getElementById("endDate").textContent = endDate.toDateString();
+
+    // MAKE THE TIMER ACTUALLY WORK BY SECONDS
+    var x = setInterval(function() {
+
+        // USE LAPTOP DATE AND TIME
+        var now = new Date().getTime();
+
+        // TO GET TIME LEFT
+        var distance = countDownDate - now;
+
+        // Calculate days, hours, minutes, and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="timer"
+        document.getElementById("timer").innerHTML = "Timer: " + days + " days " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
+
+        // WHEN THE TIMER IS OVER SHOW SOMETHING
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "BETTER LUCK NEXT TIME "/n ;
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
